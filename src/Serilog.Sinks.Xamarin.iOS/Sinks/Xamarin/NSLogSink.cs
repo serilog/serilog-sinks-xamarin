@@ -18,7 +18,7 @@ using Serilog.Core;
 using Serilog.Events;
 using Serilog.Formatting;
 
-namespace Serilog.Sinks.MonoTouch
+namespace Serilog.Sinks.Xamarin
 {
 	class NSLogSink : ILogEventSink
 	{

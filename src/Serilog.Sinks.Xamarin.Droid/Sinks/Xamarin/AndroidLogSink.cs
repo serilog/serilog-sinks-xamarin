@@ -21,7 +21,7 @@ using Serilog.Events;
 using Serilog.Formatting;
 using AndroidLog = Android.Util.Log;
 
-namespace Serilog.Sinks.MonoAndroid
+namespace Serilog.Sinks.Xamarin
 {
 	/// <summary>
 	/// Writes events to <see cref="AndroidLog"/>.
