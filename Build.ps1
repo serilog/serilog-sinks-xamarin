@@ -24,29 +24,17 @@ function Invoke-MSBuild($solution, $customLogger)
 {
     if ($customLogger)
     {
-        msbuild "$solution" /verbosity:minimal /p:Configuration=Release /logger:"$customLogger"
+        C:\PROGRA~2\MSBuild\14.0\Bin\amd64\msbuild "$solution" /verbosity:minimal /p:Configuration=Release /logger:"$customLogger"
     }
     else
     {
-        msbuild "$solution" /verbosity:minimal /p:Configuration=Release
+        C:\PROGRA~2\MSBuild\14.0\Bin\amd64\msbuild "$solution" /verbosity:minimal /p:Configuration=Release
     }
-}
-
-function Invoke-NuGetPackProj($csproj)
-{
-    nuget pack -Prop Configuration=Release -Symbols $csproj
-}
-
-function Invoke-NuGetPackSpec($nuspec, $version)
-{
-    nuget pack $nuspec -Version $version -OutputDirectory ..\..\
 }
 
 function Invoke-NuGetPack($version)
 {
-    ls src/**/*.csproj |
-        Where-Object { -not ($_.Name -like "*net40*") } |
-        ForEach-Object { Invoke-NuGetPackProj $_ }
+    nuget pack "src\Serilog.Sinks.Xamarin.nuspec" -Version $version -OutputDirectory artifacts\
 }
 
 function Invoke-Build($majorMinor, $patch, $customLogger, $notouch, $sln)

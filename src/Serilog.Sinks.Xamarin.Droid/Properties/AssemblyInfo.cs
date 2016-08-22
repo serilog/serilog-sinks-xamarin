@@ -1,9 +1,9 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 
-[assembly: AssemblyTitle("Serilog.Sinks.MonoAndroid")]
-[assembly: AssemblyDescription("Serilog sink for MonoAndroid")]
-[assembly: AssemblyCopyright("Copyright © Serilog Contributors 2014")]
+[assembly: AssemblyTitle("Serilog.Sinks.Droid")]
+[assembly: AssemblyDescription("Serilog sink for Xamarin Android")]
+[assembly: AssemblyCopyright("Copyright © Serilog Contributors 2016")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 

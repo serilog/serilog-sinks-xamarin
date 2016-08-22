@@ -1,5 +1,41 @@
-# Serilog.Sinks.Xamarin
+# Serilog.Sinks.Xamarin [![Build status](https://ci.appveyor.com/api/projects/status/8iy9owuib92gvtix?svg=true)](https://ci.appveyor.com/project/serilog/serilog-sinks-xamarin) [![Join the chat at https://gitter.im/serilog/serilog](https://img.shields.io/gitter/room/serilog/serilog.svg)](https://gitter.im/serilog/serilog)
 
-A Serilog sink that writes events to Xamarin mobile targets.
+Writes [Serilog](https://serilog.net) events to the console of Xamarin.iOS (NSLog) / Xamarin.Android (AndroidLog).
 
-**This sub-project needs an active maintainer.** Without an owner/owners who both have the knowledge and software licenses required to support Xamarin, we've been unable to move this forwards. Please raise an issue on the Serilog tracker if this is you :-)
+### Getting started
+
+Install from [NuGet](https://nuget.org/packages/serilog.sinks.xamarin):
+
+```powershell
+Install-Package Serilog.Sinks.Xamarin -Pre
+```
+
+When using Xamarin.iOS
+
+```csharp
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.NSLog();
+    .CreateLogger()
+```
+
+When using Xamarin.Android
+
+
+```csharp
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.AndroidLog();
+    .CreateLogger()
+```
+
+Within your portable class libary or within your application
+
+```csharp
+Log.Information("This will be written to either NSLog or AndroidLog");
+
+```
+
+Because the memory buffer may contain events that have not yet been written to the target sink, it is important to call `Log.CloseAndFlush()` or `Logger.Dispose()` when the application/activity exits.
+
+### About this sink
+
+This sink is maintained by [Geoffrey Huntley](https://ghuntley.com/).

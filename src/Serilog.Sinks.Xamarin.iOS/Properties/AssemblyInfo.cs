@@ -1,9 +1,9 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 
-[assembly: AssemblyTitle("Serilog.Sinks.MonoTouch")]
-[assembly: AssemblyDescription("Serilog sink for MonoTouch")]
-[assembly: AssemblyCopyright("Copyright © Serilog Contributors 2014")]
+[assembly: AssemblyTitle("Serilog.Sinks.iOS")]
+[assembly: AssemblyDescription("Serilog sink for Xamarin iOS")]
+[assembly: AssemblyCopyright("Copyright © Serilog Contributors 2016")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
