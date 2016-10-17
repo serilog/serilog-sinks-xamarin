@@ -7,15 +7,15 @@ Writes [Serilog](https://serilog.net) events to the console of Xamarin.iOS (NSLo
 Install from [NuGet](https://nuget.org/packages/serilog.sinks.xamarin):
 
 ```powershell
-Install-Package Serilog.Sinks.Xamarin -Pre
+Install-Package Serilog.Sinks.Xamarin
 ```
 
 When using Xamarin.iOS
 
 ```csharp
 Log.Logger = new LoggerConfiguration()
-    .WriteTo.NSLog();
-    .CreateLogger()
+    .WriteTo.NSLog()
+    .CreateLogger();
 ```
 
 When using Xamarin.Android
@@ -23,8 +23,8 @@ When using Xamarin.Android
 
 ```csharp
 Log.Logger = new LoggerConfiguration()
-    .WriteTo.AndroidLog();
-    .CreateLogger()
+    .WriteTo.AndroidLog()
+    .CreateLogger();
 ```
 
 Within your portable class libary or within your application
