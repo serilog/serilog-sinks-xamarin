@@ -11,7 +11,7 @@
     <iconUrl>http://serilog.net/images/serilog-sink-nuget.png</iconUrl>
     <tags>serilog logging xamarin android androidlogger monodroid monotouch ios nslog</tags>
     <dependencies>
-      <dependency id="Serilog" />
+      <dependency id="Serilog" version="2.2.0" />
     </dependencies>
   </metadata>
   <files>
