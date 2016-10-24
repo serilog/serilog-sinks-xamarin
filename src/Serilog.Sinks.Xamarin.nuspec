@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Serilog.Sinks.Xamarin</id>
@@ -11,8 +11,7 @@
     <iconUrl>http://serilog.net/images/serilog-sink-nuget.png</iconUrl>
     <tags>serilog logging xamarin android androidlogger monodroid monotouch ios nslog</tags>
     <dependencies>
-      <dependency id="Serilog" />
-      <dependency id="Newtonsoft.Json" />
+      <dependency id="Serilog" version="2.2.0" />
     </dependencies>
   </metadata>
   <files>
