@@ -25,7 +25,7 @@ namespace Serilog
 	/// </summary>
 	public static class LoggerConfigurationXamarinExtensions
     {
-		const string DefaultNSLogOutputTemplate = "[{Level}] {Message:l{NewLine:l}{Exception:l}";
+		const string DefaultNSLogOutputTemplate = "[{Level}] {Message:l}{NewLine:l}{Exception:l}";
 
 	    /// <summary>
 	    /// Adds a sink that writes log events to a Azure DocumentDB table in the provided endpoint.
