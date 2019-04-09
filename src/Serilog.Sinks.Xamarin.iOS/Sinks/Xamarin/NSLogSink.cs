@@ -26,16 +26,15 @@ namespace Serilog.Sinks.Xamarin
 
 		public NSLogSink(ITextFormatter textFormatter)
 		{
-			if (textFormatter == null) throw new ArgumentNullException("textFormatter");
-			_textFormatter = textFormatter;
+            _textFormatter = textFormatter ?? throw new ArgumentNullException(nameof(textFormatter));
 		}
 
 		public void Emit(LogEvent logEvent)
 		{
-			if (logEvent == null) throw new ArgumentNullException("logEvent");
+			if (logEvent == null) throw new ArgumentNullException(nameof(logEvent));
 			var renderSpace = new StringWriter();
 			_textFormatter.Format(logEvent, renderSpace);
-			Console.WriteLine (renderSpace.ToString ());
+			Console.WriteLine (renderSpace.ToString());
 		}
 	}
 }

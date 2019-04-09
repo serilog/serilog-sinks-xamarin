@@ -43,10 +43,10 @@ namespace Serilog
 		{
 
 			if (sinkConfiguration == null)
-				throw new ArgumentNullException("sinkConfiguration");
+				throw new ArgumentNullException(nameof(sinkConfiguration));
 
 			if (outputTemplate == null)
-				throw new ArgumentNullException("outputTemplate");
+				throw new ArgumentNullException(nameof(outputTemplate));
 
 			var formatter = new MessageTemplateTextFormatter(outputTemplate, formatProvider);
 			return sinkConfiguration.Sink(new AndroidLogSink(formatter), restrictedToMinimumLevel);
