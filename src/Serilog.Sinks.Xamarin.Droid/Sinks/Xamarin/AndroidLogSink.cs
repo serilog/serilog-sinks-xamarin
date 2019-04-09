@@ -23,64 +23,59 @@ using AndroidLog = Android.Util.Log;
 
 namespace Serilog.Sinks.Xamarin
 {
-	/// <summary>
-	/// Writes events to <see cref="AndroidLog"/>.
-	/// </summary>
-	public class AndroidLogSink : ILogEventSink
-	{
-		private readonly ITextFormatter _textFormatter;
+    /// <summary>
+    /// Writes events to <see cref="AndroidLog"/>.
+    /// </summary>
+    public class AndroidLogSink : ILogEventSink
+    {
+        private readonly ITextFormatter _textFormatter;
 
-		/// <summary>
-		/// Create an instance with the provided <see cref="ITextFormatter"/>.
-		/// </summary>
-		/// <param name="textFormatter">Formatter for log events</param>
-		/// <exception cref="ArgumentNullException">The text formatter must be provided</exception>
-		public AndroidLogSink(ITextFormatter textFormatter)
-		{
+        /// <summary>
+        /// Create an instance with the provided <see cref="ITextFormatter"/>.
+        /// </summary>
+        /// <param name="textFormatter">Formatter for log events</param>
+        /// <exception cref="ArgumentNullException">The text formatter must be provided</exception>
+        public AndroidLogSink(ITextFormatter textFormatter)
+        {
             _textFormatter = textFormatter ?? throw new ArgumentNullException(nameof(textFormatter));
-		}
+        }
 
         /// <summary>
         /// Emit the provided log event to the sink.
         /// </summary>
         /// <param name="logEvent">The log event to write.</param>
         public void Emit(LogEvent logEvent)
-		{
-			if (logEvent == null) throw new ArgumentNullException(nameof(logEvent));
-			var renderSpace = new StringWriter();
-			_textFormatter.Format(logEvent, renderSpace);
+        {
+            if (logEvent == null) throw new ArgumentNullException(nameof(logEvent));
+            var renderSpace = new StringWriter();
+            _textFormatter.Format(logEvent, renderSpace);
 
-			var tag = logEvent.Properties.Where(x => x.Key == Constants.SourceContextPropertyName).Select(x => x.Value.ToString("l", null)).FirstOrDefault() ?? "";
+            var tag = logEvent.Properties.Where(x => x.Key == Constants.SourceContextPropertyName).Select(x => x.Value.ToString("l", null)).FirstOrDefault() ?? "";
 
-			switch (logEvent.Level) {
-				case LogEventLevel.Debug:
-					AndroidLog.Debug(tag, renderSpace.ToString());
-					break;
-
-				case LogEventLevel.Information:
-					AndroidLog.Info(tag, renderSpace.ToString());
-					break;
-
-				case LogEventLevel.Verbose:
-					AndroidLog.Verbose(tag, renderSpace.ToString());
-					break;
-
-				case LogEventLevel.Warning:
-					AndroidLog.Warn(tag, renderSpace.ToString());
-					break;
-
-				case LogEventLevel.Error:
-					AndroidLog.Error(tag, renderSpace.ToString());
-					break;
-
-				case LogEventLevel.Fatal:
-					AndroidLog.Wtf(tag, renderSpace.ToString());
-					break;
-
-				default:
-					AndroidLog.WriteLine(LogPriority.Assert, tag, renderSpace.ToString());
-					break;
-			}
-		}
-	}
+            switch (logEvent.Level)
+            {
+                case LogEventLevel.Debug:
+                    AndroidLog.Debug(tag, renderSpace.ToString());
+                    break;
+                case LogEventLevel.Information:
+                    AndroidLog.Info(tag, renderSpace.ToString());
+                    break;
+                case LogEventLevel.Verbose:
+                    AndroidLog.Verbose(tag, renderSpace.ToString());
+                    break;
+                case LogEventLevel.Warning:
+                    AndroidLog.Warn(tag, renderSpace.ToString());
+                    break;
+                case LogEventLevel.Error:
+                    AndroidLog.Error(tag, renderSpace.ToString());
+                    break;
+                case LogEventLevel.Fatal:
+                    AndroidLog.Wtf(tag, renderSpace.ToString());
+                    break;
+                default:
+                    AndroidLog.WriteLine(LogPriority.Assert, tag, renderSpace.ToString());
+                    break;
+            }
+        }
+    }
 }

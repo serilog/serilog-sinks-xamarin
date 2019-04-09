@@ -20,21 +20,21 @@ using Serilog.Formatting;
 
 namespace Serilog.Sinks.Xamarin
 {
-	class NSLogSink : ILogEventSink
-	{
-		readonly ITextFormatter _textFormatter;
+    class NSLogSink : ILogEventSink
+    {
+        readonly ITextFormatter _textFormatter;
 
-		public NSLogSink(ITextFormatter textFormatter)
-		{
+        public NSLogSink(ITextFormatter textFormatter)
+        {
             _textFormatter = textFormatter ?? throw new ArgumentNullException(nameof(textFormatter));
-		}
+        }
 
-		public void Emit(LogEvent logEvent)
-		{
-			if (logEvent == null) throw new ArgumentNullException(nameof(logEvent));
-			var renderSpace = new StringWriter();
-			_textFormatter.Format(logEvent, renderSpace);
-			Console.WriteLine (renderSpace.ToString());
-		}
-	}
+        public void Emit(LogEvent logEvent)
+        {
+            if (logEvent == null) throw new ArgumentNullException(nameof(logEvent));
+            var renderSpace = new StringWriter();
+            _textFormatter.Format(logEvent, renderSpace);
+            Console.WriteLine(renderSpace.ToString());
+        }
+    }
 }
