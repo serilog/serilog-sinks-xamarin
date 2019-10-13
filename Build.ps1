@@ -24,11 +24,11 @@ function Invoke-MSBuild($solution, $customLogger)
 {
     if ($customLogger)
     {
-        C:\PROGRA~2\MSBuild\14.0\Bin\amd64\msbuild "$solution" /verbosity:minimal /p:Configuration=Release /logger:"$customLogger"
+        msbuild "$solution" /verbosity:minimal /p:Configuration=Release /logger:"$customLogger"
     }
     else
     {
-        C:\PROGRA~2\MSBuild\14.0\Bin\amd64\msbuild "$solution" /verbosity:minimal /p:Configuration=Release
+        msbuild "$solution" /verbosity:minimal /p:Configuration=Release
     }
 }
 
