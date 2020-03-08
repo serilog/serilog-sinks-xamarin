@@ -1,32 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <ProjectGuid>{7E96D14B-2224-4EB9-B26B-6306D225024F}</ProjectGuid>
-    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <RootNamespace>Serilog.Sinks.Xamarin</RootNamespace>
-    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyTitle>Serilog.Sinks.iOS</AssemblyTitle>
     <Description>Serilog sink for Xamarin iOS</Description>
     <Copyright>Copyright © Serilog Contributors 2016</Copyright>
-    <CodesignKey>iPhone Developer</CodesignKey>
-    <ConsolePause>false</ConsolePause>
     <TargetFramework>Xamarin.iOS10</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugType>full</DebugType>
-    <OutputPath>bin\iPhone\Debug</OutputPath>
-    <DefineConstants>DEBUG</DefineConstants>
-    <MtouchDebug>true</MtouchDebug>
-  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>none</DebugType>
-    <OutputPath>bin\iPhone\Release</OutputPath>
     <DocumentationFile>bin\iPhone\$(Configuration)\Serilog.Sinks.Xamarin.iOS.xml</DocumentationFile>
   </PropertyGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Serilog" Version="2.1.0" />
