@@ -4,7 +4,7 @@
     <AssemblyTitle>Serilog.Sinks.iOS</AssemblyTitle>
     <Description>Serilog sink for Xamarin iOS</Description>
     <Copyright>Copyright © Serilog Contributors 2016</Copyright>
-    <TargetFramework>Xamarin.iOS10</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DocumentationFile>bin\iPhone\$(Configuration)\Serilog.Sinks.Xamarin.iOS.xml</DocumentationFile>
