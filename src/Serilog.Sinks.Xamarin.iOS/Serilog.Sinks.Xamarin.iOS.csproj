@@ -10,6 +10,9 @@
     <DocumentationFile>bin\iPhone\$(Configuration)\Serilog.Sinks.Xamarin.iOS.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="..\Serilog.Sinks.Xamarin.nuspec">
+      <Link>Serilog.Sinks.Xamarin.nuspec</Link>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Serilog" Version="2.1.0" />
