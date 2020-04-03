@@ -2,14 +2,15 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Serilog.Sinks.Xamarin</id>
-    <version>0.1.0</version>
+    <version>0.2.0-beta3</version>
     <authors>Serilog Contributors</authors>
-    <description>Serilog event sink that writes to Xamarin Android AndroidLogger and/or Xamarin iOS NSLOG.</description>
+    <description>Serilog event sink that writes to Xamarin Android AndroidLogger
+and/or Xamarin iOS + macOS NSLog.</description>
     <language>en-US</language>
     <projectUrl>http://serilog.net</projectUrl>
     <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
     <iconUrl>http://serilog.net/images/serilog-sink-nuget.png</iconUrl>
-    <tags>serilog logging xamarin android androidlogger monodroid monotouch ios nslog</tags>
+    <tags>serilog logging xamarin android androidlogger monodroid monotouch ios macos nslog</tags>
     <dependencies>
       <dependency id="Serilog" version="2.2.0" />
     </dependencies>
@@ -17,8 +18,10 @@
   <files>
     <file src="Serilog.Sinks.Xamarin.Droid\bin\Release\Serilog.Sinks.Xamarin.Droid.dll" target="lib\MonoAndroid403" />
     <file src="Serilog.Sinks.Xamarin.Droid\bin\Release\Serilog.Sinks.Xamarin.Droid.xml" target="lib\MonoAndroid403" />
-    <file src="Serilog.Sinks.Xamarin.iOS\bin\iPhone\Release\Serilog.Sinks.Xamarin.iOS.dll" target="lib\Xamarin.iOS10" />
-    <file src="Serilog.Sinks.Xamarin.iOS\bin\iPhone\Release\Serilog.Sinks.Xamarin.iOS.xml" target="lib\Xamarin.iOS10" />
+    <file src="Serilog.Sinks.Xamarin.iOS\bin\Release\netstandard2.0\Serilog.Sinks.Xamarin.iOS.dll" target="lib\Xamarin.iOS10" />
+    <file src="Serilog.Sinks.Xamarin.iOS\bin\Release\netstandard2.0\Serilog.Sinks.Xamarin.iOS.xml" target="lib\Xamarin.iOS10" />
+    <file src="Serilog.Sinks.Xamarin.iOS\bin\Release\netstandard2.0\Serilog.Sinks.Xamarin.iOS.dll" target="lib\Xamarin.Mac20" />
+    <file src="Serilog.Sinks.Xamarin.iOS\bin\Release\netstandard2.0\Serilog.Sinks.Xamarin.iOS.xml" target="lib\Xamarin.Mac20" />
   </files>
 </package>
 
