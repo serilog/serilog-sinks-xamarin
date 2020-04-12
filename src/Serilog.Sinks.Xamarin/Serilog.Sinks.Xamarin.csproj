@@ -1,0 +1,25 @@
+<Project Sdk="MSBuild.Sdk.Extras">
+
+    <PropertyGroup>
+        <TargetFrameworks>Xamarin.iOS10;Xamarin.Mac20;MonoAndroid90</TargetFrameworks>
+        <NuspecFile>.\src\Serilog.Sinks.Xamarin.nuspec</NuspecFile>
+        <!-- <Version>0.2.0</Version> -->
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Remove="Sinks\Xamarin\**\*.cs" />
+        <None Include="Sinks\Xamarin\**\*.cs" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
+        <Folder Include="Sinks\Xamarin\apple-common\**\*.cs" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.Mac')) ">
+        <Folder Include="Sinks\Xamarin\apple-common\**\*.cs" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.MonoAndroid')) ">
+        <Folder Include="Sinks\Xamarin\android\**\*.cs" />
+    </ItemGroup>
+</Project>

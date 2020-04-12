@@ -190,3 +190,6 @@ FakesAssemblies/
 
 # JetBrains Rider
 .idea
+
+# macOS
+.DS_Store

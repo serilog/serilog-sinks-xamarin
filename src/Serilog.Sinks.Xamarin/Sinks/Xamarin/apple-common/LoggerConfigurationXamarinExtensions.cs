@@ -23,7 +23,7 @@ namespace Serilog
 	/// <summary>
 	/// Adds WriteTo.NSLog() to the logger configuration.
 	/// </summary>
-	public static class LoggerConfigurationXamarinExtensions
+	public static class oggerConfigurationXamarinExtensions
     {
 		const string DefaultNSLogOutputTemplate = "[{Level}] {Message:l}{NewLine:l}{Exception:l}";
 

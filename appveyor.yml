@@ -5,7 +5,7 @@ configuration: Release
 install:
   - ps: mkdir -Force ".\artifacts\" | Out-Null
 build_script:
-- ps: ./Build.ps1 -majorMinor 0.1 -patch "$env:APPVEYOR_BUILD_VERSION" -branch "$env:APPVEYOR_REPO_BRANCH"
+- ps: ./Build.ps1 -majorMinor 0.2.0 -revision "$env:APPVEYOR_BUILD_VERSION" -branch "$env:APPVEYOR_REPO_BRANCH"
 test: off
 artifacts:
 - path: artifacts/Serilog.*.nupkg
