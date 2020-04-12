@@ -7,6 +7,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serilog.Sinks.Xamarin.Droid
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serilog.Sinks.Xamarin.iOS", "src\Serilog.Sinks.Xamarin.iOS\Serilog.Sinks.Xamarin.iOS.csproj", "{7E96D14B-2224-4EB9-B26B-6306D225024F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solution", ".solution", "{D0A9316F-8F65-4C36-9FF4-EAE8E65EC005}"
+ProjectSection(SolutionItems) = preProject
+	CHANGES.md = CHANGES.md
+	LICENSE = LICENSE
+	README.md = README.md
+	.gitignore = .gitignore
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
