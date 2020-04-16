@@ -34,7 +34,7 @@ function Invoke-MSBuild($solution, $customLogger)
 
 function Invoke-NuGetPack($version)
 {
-    nuget pack "src/Serilog.Sinks.Xamarin.nuspec" -OutputDirectory artifacts\ -properties Configuration=Release
+    nuget pack "src/Serilog.Sinks.Xamarin.nuspec" -Version $version -OutputDirectory artifacts\ -properties Configuration=Release
 }
 
 function Invoke-Build($majorMinorPatch, $revision, $customLogger, $notouch, $sln)
