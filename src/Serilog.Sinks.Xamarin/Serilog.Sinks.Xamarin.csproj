@@ -11,14 +11,18 @@
     </ItemGroup>
 
     <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
-        <Folder Include="Sinks\Xamarin\apple-common\**\*.cs" />
+        <Compile Include="Sinks\Xamarin\apple-common\**\*.cs" />
     </ItemGroup>
 
     <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.Mac')) ">
-        <Folder Include="Sinks\Xamarin\apple-common\**\*.cs" />
+        <Compile Include="Sinks\Xamarin\apple-common\**\*.cs" />
     </ItemGroup>
 
-    <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.MonoAndroid')) ">
-        <Folder Include="Sinks\Xamarin\android\**\*.cs" />
+    <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
+        <Compile Include="Sinks\Xamarin\android\**\*.cs" />
     </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Serilog" Version="2.1.0" />
+  </ItemGroup>
 </Project>
