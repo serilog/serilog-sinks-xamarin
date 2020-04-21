@@ -2,10 +2,9 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Serilog.Sinks.Xamarin</id>
-    <version>0.2.0-beta3</version>
+    <version>0.2.0</version>
     <authors>Serilog Contributors</authors>
-    <description>Serilog event sink that writes to Xamarin Android AndroidLogger
-and/or Xamarin iOS + macOS NSLog.</description>
+    <description>Serilog event sink that writes to Xamarin Android AndroidLogger and/or Xamarin iOS or Xamarin macOS NSLog.</description>
     <language>en-US</language>
     <projectUrl>http://serilog.net</projectUrl>
     <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>

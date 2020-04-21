@@ -20,15 +20,15 @@ function Install-NuGetPackages($solution)
     nuget restore $solution
 }
 
-function Invoke-MSBuild($solution, $customLogger)
+function Invoke-MSBuild($solution, $assembly, $customLogger)
 {
     if ($customLogger)
     {
-        msbuild "$solution" /verbosity:minimal /p:Configuration=Release /logger:"$customLogger"
+        msbuild "$solution" /verbosity:minimal /p:Configuration=Release /p:AssemblyVersion=$assembly /p:FileVersion=$assembly /p:InformationalVersion=$assembly /logger:"$customLogger"
     }
     else
     {
-        msbuild "$solution" /verbosity:minimal /p:Configuration=Release
+        msbuild "$solution" /verbosity:minimal /p:Configuration=Release /p:AssemblyVersion=$assembly /p:FileVersion=$assembly /p:InformationalVersion=$assembly
     }
 }
 
@@ -52,9 +52,14 @@ function Invoke-Build($majorMinorPatch, $revision, $customLogger, $notouch, $sln
         Set-AssemblyVersions $package $assembly
     }
 
+    $assembly = "$majorMinorPatch.$revision"
+
+    Write-Output "Assembly version will be set to $assembly"
+    Set-AssemblyVersions $package $assembly
+
     Install-NuGetPackages $slnfile
     
-    Invoke-MSBuild $slnfile $customLogger
+    Invoke-MSBuild $slnfile $assembly $customLogger
 
     Invoke-NuGetPack $package
 }

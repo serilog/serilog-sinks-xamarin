@@ -3,7 +3,6 @@
     <PropertyGroup>
         <TargetFrameworks>Xamarin.iOS10;Xamarin.Mac20;MonoAndroid90</TargetFrameworks>
         <NuspecFile>.\src\Serilog.Sinks.Xamarin.nuspec</NuspecFile>
-        <!-- <Version>0.2.0</Version> -->
     </PropertyGroup>
 
     <ItemGroup>
