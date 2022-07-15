@@ -1,10 +1,28 @@
-<Project Sdk="MSBuild.Sdk.Extras">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <Description>A Serilog sink that writes log events to Xamarin Android AndroidLogger and/or Xamarin iOS or Xamarin macOS NSLog.</Description>
+        <VersionPrefix>1.0.0</VersionPrefix>
+        <Authors>Serilog Contributors</Authors>
         <TargetFrameworks>Xamarin.iOS10;Xamarin.Mac20;MonoAndroid90</TargetFrameworks>
-        <NuspecFile>.\src\Serilog.Sinks.Xamarin.nuspec</NuspecFile>
+        <AssemblyOriginatorKeyFile>../../assets/Serilog.snk</AssemblyOriginatorKeyFile>
+        <SignAssembly>true</SignAssembly>
+        <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
+        <PackageTags>serilog;xamarin;android;androidlogger;monodroid;monotouch;ios;macos;nslog</PackageTags>
+        <PackageIcon>images\icon.png</PackageIcon>
+        <PackageProjectUrl>https://github.com/serilog/serilog-sinks-xamarin</PackageProjectUrl>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/serilog/serilog-sinks-xamarin</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+        <TreatSpecificWarningsAsErrors />
+        <RootNamespace>Serilog</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+        <PackageReference Include="Serilog" Version="2.11.0" />
+    </ItemGroup>
+    
     <ItemGroup>
         <Compile Remove="Sinks\Xamarin\**\*.cs" />
         <None Include="Sinks\Xamarin\**\*.cs" />
@@ -23,6 +41,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Serilog" Version="2.1.0" />
-  </ItemGroup>
+        <None Include="..\..\assets\serilog-sink-nuget.png" Pack="true" Visible="false" PackagePath="images\icon.png" />
+    </ItemGroup>
 </Project>
