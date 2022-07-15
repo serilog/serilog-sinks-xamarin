@@ -2,23 +2,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32708.82
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solution", ".solution", "{D0A9316F-8F65-4C36-9FF4-EAE8E65EC005}"
-	ProjectSection(SolutionItems) = preProject
-		.gitignore = .gitignore
-		CHANGES.md = CHANGES.md
-		global.json = global.json
-		LICENSE = LICENSE
-		README.md = README.md
-		src\Serilog.Sinks.Xamarin.nuspec = src\Serilog.Sinks.Xamarin.nuspec
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{322FD05A-A274-4AF2-99CA-BCCB0B4400F5}"
-	ProjectSection(SolutionItems) = preProject
-		appveyor.yml = appveyor.yml
-		Build.ps1 = Build.ps1
-	EndProjectSection
+<<<<<<< HEAD
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sln", "sln", "{322FD05A-A274-4AF2-99CA-BCCB0B4400F5}"
+ProjectSection(SolutionItems) = preProject
+	appveyor.yml = appveyor.yml
+	Build.ps1 = Build.ps1
+	.gitignore = .gitignore
+	CHANGES.md = CHANGES.md
+	global.json = global.json
+	LICENSE = LICENSE
+	README.md = README.md
+EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serilog.Sinks.Xamarin", "src\Serilog.Sinks.Xamarin\Serilog.Sinks.Xamarin.csproj", "{717384AC-F5BC-44BE-92B0-CC7DAF50CB8A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B2CE2F52-1413-4B3D-86CB-555235E9B71C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{8D712A90-44C6-47F4-9746-2D21743137CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +34,8 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{717384AC-F5BC-44BE-92B0-CC7DAF50CB8A} = {B2CE2F52-1413-4B3D-86CB-555235E9B71C}
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {37019599-01BF-43D7-BE49-21A7A56EC8E2}
 	EndGlobalSection

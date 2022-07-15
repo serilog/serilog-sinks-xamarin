@@ -36,7 +36,3 @@ Log.Information("This will be written to either NSLog or AndroidLog");
 ```
 
 Because the memory buffer may contain events that have not yet been written to the target sink, it is important to call `Log.CloseAndFlush()` or `Logger.Dispose()` when the application/activity exits.
-
-### About this sink
-
-This sink is maintained by [Geoffrey Huntley](https://ghuntley.com/).
