@@ -1,6 +1,6 @@
 param(
-    [String] $majorMinor = "0.0",  # 2.0
-    [String] $patch = "0",         # $env:APPVEYOR_BUILD_VERSION
+    [String] $majorMinorPatch = "0.0.0",  # 2.0
+    [String] $revision = "0",         # $env:APPVEYOR_BUILD_VERSION
     [String] $customLogger = "",   # C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll
     [Switch] $notouch,
     [String] $sln                  # e.g serilog-sink-name
@@ -20,41 +20,46 @@ function Install-NuGetPackages($solution)
     nuget restore $solution
 }
 
-function Invoke-MSBuild($solution, $customLogger)
+function Invoke-MSBuild($solution, $assembly, $customLogger)
 {
     if ($customLogger)
     {
-        C:\PROGRA~2\MSBuild\14.0\Bin\amd64\msbuild "$solution" /verbosity:minimal /p:Configuration=Release /logger:"$customLogger"
+        msbuild "$solution" /verbosity:minimal /p:Configuration=Release /p:AssemblyVersion=$assembly /p:FileVersion=$assembly /p:InformationalVersion=$assembly /logger:"$customLogger"
     }
     else
     {
-        C:\PROGRA~2\MSBuild\14.0\Bin\amd64\msbuild "$solution" /verbosity:minimal /p:Configuration=Release
+        msbuild "$solution" /verbosity:minimal /p:Configuration=Release /p:AssemblyVersion=$assembly /p:FileVersion=$assembly /p:InformationalVersion=$assembly
     }
 }
 
 function Invoke-NuGetPack($version)
 {
-    nuget pack "src\Serilog.Sinks.Xamarin.nuspec" -Version $version -OutputDirectory artifacts\
+    nuget pack "src/Serilog.Sinks.Xamarin.nuspec" -Version $version -OutputDirectory artifacts\ -properties Configuration=Release
 }
 
-function Invoke-Build($majorMinor, $patch, $customLogger, $notouch, $sln)
+function Invoke-Build($majorMinorPatch, $revision, $customLogger, $notouch, $sln)
 {
-    $package="$majorMinor.$patch"
+    $package="$majorMinorPatch.$revision"
     $slnfile = "$sln.sln"
 
     Write-Output "$sln $package"
 
     if (-not $notouch)
     {
-        $assembly = "$majorMinor.0.0"
+        $assembly = "$majorMinorPatch.$revision"
 
         Write-Output "Assembly version will be set to $assembly"
         Set-AssemblyVersions $package $assembly
     }
 
+    $assembly = "$majorMinorPatch.$revision"
+
+    Write-Output "Assembly version will be set to $assembly"
+    Set-AssemblyVersions $package $assembly
+
     Install-NuGetPackages $slnfile
     
-    Invoke-MSBuild $slnfile $customLogger
+    Invoke-MSBuild $slnfile $assembly $customLogger
 
     Invoke-NuGetPack $package
 }
@@ -70,4 +75,4 @@ if (-not $sln)
     $sln = $slnfull.BaseName
 }
 
-Invoke-Build $majorMinor $patch $customLogger $notouch $sln
+Invoke-Build $majorMinorPatch $revision $customLogger $notouch $sln
