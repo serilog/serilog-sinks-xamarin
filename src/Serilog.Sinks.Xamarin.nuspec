@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+	<metadata>
+		<id>Serilog.Sinks.Xamarin</id>
+		<version>0.2.0</version>
+		<authors>Serilog Contributors</authors>
+		<description>Serilog event sink that writes to Xamarin Android AndroidLogger and/or Xamarin iOS or Xamarin macOS NSLog.</description>
+		<language>en-US</language>
+		<projectUrl>http://serilog.net</projectUrl>
+		<licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+		<iconUrl>http://serilog.net/images/serilog-sink-nuget.png</iconUrl>
+		<tags>serilog logging xamarin android androidlogger monodroid monotouch ios macos nslog</tags>
+		<dependencies>
+			<dependency id="Serilog" version="2.1.0" />
+		</dependencies>
+	</metadata>
+	<files>
+		<file src="Serilog.Sinks.Xamarin\bin\$configuration$\monoandroid90\Serilog.Sinks.Xamarin.dll" target="lib\MonoAndroid403" />
+		<file src="Serilog.Sinks.Xamarin\bin\$configuration$\monoandroid90\Serilog.Sinks.Xamarin.pdb" target="lib\MonoAndroid403" />
+		<file src="Serilog.Sinks.Xamarin\bin\$configuration$\xamarin.ios10\Serilog.Sinks.Xamarin.dll" target="lib\Xamarin.iOS10" />
+		<file src="Serilog.Sinks.Xamarin\bin\$configuration$\xamarin.ios10\Serilog.Sinks.Xamarin.pdb" target="lib\Xamarin.iOS10" />
+		<file src="Serilog.Sinks.Xamarin\bin\$configuration$\xamarin.mac20\Serilog.Sinks.Xamarin.dll" target="lib\Xamarin.Mac20" />
+		<file src="Serilog.Sinks.Xamarin\bin\$configuration$\xamarin.mac20\Serilog.Sinks.Xamarin.pdb" target="lib\Xamarin.Mac20" />
+		<file src="Serilog.Sinks.Xamarin\bin\$configuration$\net6.0-android\Serilog.Sinks.Xamarin.dll" target="lib\net6.0-android31.0" />
+		<file src="Serilog.Sinks.Xamarin\bin\$configuration$\net6.0-android\Serilog.Sinks.Xamarin.pdb" target="lib\net6.0-android31.0" />
+		<file src="Serilog.Sinks.Xamarin\bin\$configuration$\net6.0-ios\Serilog.Sinks.Xamarin.dll" target="lib\net6.0-ios15.4" />
+		<file src="Serilog.Sinks.Xamarin\bin\$configuration$\net6.0-ios\Serilog.Sinks.Xamarin.pdb" target="lib\net6.0-ios15.4" />
+		<file src="Serilog.Sinks.Xamarin\bin\$configuration$\net6.0-maccatalyst\Serilog.Sinks.Xamarin.dll" target="lib\net6.0-maccatalyst15.4" />
+		<file src="Serilog.Sinks.Xamarin\bin\$configuration$\net6.0-maccatalyst\Serilog.Sinks.Xamarin.pdb" target="lib\net6.0-maccatalyst15.4" />
+		<file src="Serilog.Sinks.Xamarin\bin\$configuration$\net6.0-macos\Serilog.Sinks.Xamarin.dll" target="lib\net6.0-macos12.3" />
+		<file src="Serilog.Sinks.Xamarin\bin\$configuration$\net6.0-macos\Serilog.Sinks.Xamarin.pdb" target="lib\net6.0-macos12.3" />
+	</files>
+</package>
