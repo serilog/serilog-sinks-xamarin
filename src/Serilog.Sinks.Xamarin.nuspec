@@ -23,4 +23,3 @@
     <file src="Serilog.Sinks.Xamarin\bin\$configuration$\xamarin.mac20\Serilog.Sinks.Xamarin.pdb" target="lib\Xamarin.Mac20" />
   </files>
 </package>
-
