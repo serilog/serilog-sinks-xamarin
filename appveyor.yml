@@ -1,8 +1,10 @@
 version: '{build}'
 skip_tags: true
-image: Visual Studio 2019
+image: Visual Studio 2022
+configuration: Release
 install:
   - ps: mkdir -Force ".\artifacts\" | Out-Null
+  - cmd: dotnet workload install maui macos android ios maccatalyst
 build_script:
 - ps: ./Build.ps1 -majorMinor 0.2.0 -revision "$env:APPVEYOR_BUILD_VERSION" -branch "$env:APPVEYOR_REPO_BRANCH"
 test: off

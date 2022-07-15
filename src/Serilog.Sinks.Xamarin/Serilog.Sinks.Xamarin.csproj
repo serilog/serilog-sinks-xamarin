@@ -1,28 +1,45 @@
 <Project Sdk="MSBuild.Sdk.Extras">
 
-    <PropertyGroup>
-        <TargetFrameworks>Xamarin.iOS10;Xamarin.Mac20;MonoAndroid90</TargetFrameworks>
-        <NuspecFile>.\src\Serilog.Sinks.Xamarin.nuspec</NuspecFile>
-    </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>Xamarin.iOS10;Xamarin.Mac20;MonoAndroid90;net6.0-ios;net6.0-macos;net6.0-android;net6.0-maccatalyst</TargetFrameworks>
+		<NuspecFile>.\src\Serilog.Sinks.Xamarin.nuspec</NuspecFile>
 
-    <ItemGroup>
-        <Compile Remove="Sinks\Xamarin\**\*.cs" />
-        <None Include="Sinks\Xamarin\**\*.cs" />
-    </ItemGroup>
+		<IsMonoAndroid>false</IsMonoAndroid>
+		<IsMonoAndroid Condition="$(TargetFramework.ToLower().StartsWith('monoandroid'))">true</IsMonoAndroid>
 
-    <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
-        <Compile Include="Sinks\Xamarin\apple-common\**\*.cs" />
-    </ItemGroup>
+		<IsXamarinIOS>false</IsXamarinIOS>
+		<IsXamarinIOS Condition="'$(TargetFramework)'=='net6.0-maccatalyst' or $(TargetFramework.ToLower().StartsWith('xamarin.ios'))">true</IsXamarinIOS>
 
-    <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.Mac')) ">
-        <Compile Include="Sinks\Xamarin\apple-common\**\*.cs" />
-    </ItemGroup>
+		<IsXamarinMac>false</IsXamarinMac>
+		<IsXamarinMac Condition="$(TargetFramework.ToLower().StartsWith('xamarin.mac'))">true</IsXamarinMac>
 
-    <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
-        <Compile Include="Sinks\Xamarin\android\**\*.cs" />
-    </ItemGroup>
+		<_IsAndroid>false</_IsAndroid>
+		<_IsAndroid Condition="$(IsMonoAndroid) or '$(TargetFramework)'=='net6.0-android'">true</_IsAndroid>
 
-    <ItemGroup>
-        <PackageReference Include="Serilog" Version="2.1.0" />
-  </ItemGroup>
+		<_IsCatalyst>false</_IsCatalyst>
+		<_IsCatalyst Condition="$(_IsCatalyst) or '$(TargetFramework)'=='net6.0-maccatalyst'">true</_IsCatalyst>
+
+		<_IsIOS>false</_IsIOS>
+		<_IsIOS Condition="$(IsXamarinIOS) or '$(TargetFramework)'=='net6.0-ios'">true</_IsIOS>
+
+		<_IsMacOS>false</_IsMacOS>
+		<_IsMacOS Condition="$(IsXamarinMac) or '$(TargetFramework)'=='net6.0-macos'">true</_IsMacOS>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Remove="**\*.cs" />
+		<None Include="**\*.cs" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" $(_IsIOS) or $(_IsCatalyst) or $(_IsMacOS) ">
+		<Compile Include="Sinks\Xamarin\apple-common\**\*.cs" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" $(_IsAndroid) ">
+		<Compile Include="Sinks\Xamarin\android\**\*.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Serilog" Version="2.1.0" />
+	</ItemGroup>
 </Project>
