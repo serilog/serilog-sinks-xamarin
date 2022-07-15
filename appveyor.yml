@@ -1,9 +1,11 @@
 version: '{build}'
 skip_tags: true
 image: Visual Studio 2022
+configuration: Release
 install:
-  - ps: mkdir -Force ".\artifacts\" | Out-Null
+  - ps: mkdir -Force ".\build\" | Out-Null
   - cmd: dotnet workload install maui macos android ios maccatalyst
+  - ps: mkdir -Force ".\artifacts\" | Out-Null
 build_script:
 - ps: ./Build.ps1
 test: off

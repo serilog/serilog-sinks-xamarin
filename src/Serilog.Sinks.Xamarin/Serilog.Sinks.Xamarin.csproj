@@ -1,70 +1,66 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="MSBuild.Sdk.Extras">
 
-    <PropertyGroup>
-        <Description>A Serilog sink that writes log events to Xamarin Android AndroidLogger and/or Xamarin iOS or Xamarin macOS NSLog.</Description>
-        <VersionPrefix>1.0.0</VersionPrefix>
-        <Authors>Serilog Contributors</Authors>
-    		<TargetFrameworks>Xamarin.iOS10;Xamarin.Mac20;MonoAndroid90;net6.0-ios;net6.0-macos;net6.0-android;net6.0-maccatalyst</TargetFrameworks>
-        <AssemblyOriginatorKeyFile>../../assets/Serilog.snk</AssemblyOriginatorKeyFile>
-        <SignAssembly>true</SignAssembly>
-        <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
-        <PackageTags>serilog;xamarin;android;androidlogger;monodroid;monotouch;ios;macos;nslog</PackageTags>
-        <PackageIcon>images\icon.png</PackageIcon>
-        <PackageProjectUrl>https://github.com/serilog/serilog-sinks-xamarin</PackageProjectUrl>
-        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-        <RepositoryUrl>https://github.com/serilog/serilog-sinks-xamarin</RepositoryUrl>
-        <RepositoryType>git</RepositoryType>
-        <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-        <TreatSpecificWarningsAsErrors />
-        <RootNamespace>Serilog</RootNamespace>
-    </PropertyGroup>
+	<PropertyGroup>
+		<Description>A Serilog sink that writes log events to Xamarin Android AndroidLogger and/or Xamarin iOS or Xamarin macOS NSLog.</Description>
+		<VersionPrefix>1.0.0</VersionPrefix>
+		<Authors>Serilog Contributors</Authors>
+		<TargetFrameworks>Xamarin.iOS10;Xamarin.Mac20;MonoAndroid90;net6.0-ios;net6.0-macos;net6.0-android;net6.0-maccatalyst</TargetFrameworks>
+		<AssemblyOriginatorKeyFile>../../assets/Serilog.snk</AssemblyOriginatorKeyFile>
+		<SignAssembly>true</SignAssembly>
+		<PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
+		<PackageTags>serilog;xamarin;android;androidlogger;monodroid;monotouch;ios;macos;nslog</PackageTags>
+		<PackageIcon>images\icon.png</PackageIcon>
+		<PackageProjectUrl>https://github.com/serilog/serilog-sinks-xamarin</PackageProjectUrl>
+		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+		<RepositoryUrl>https://github.com/serilog/serilog-sinks-xamarin</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+		<TreatSpecificWarningsAsErrors />
+		<RootNamespace>Serilog</RootNamespace>
+		<GeneratePackageOnBuild Condition="'$(Configuration)'=='Release'">true</GeneratePackageOnBuild>
+	</PropertyGroup>
 
-    <PropertyGroup>
-        <IsMonoAndroid>false</IsMonoAndroid>
-        <IsMonoAndroid Condition="$(TargetFramework.ToLower().StartsWith('monoandroid'))">true</IsMonoAndroid>
-        
-        <IsXamarinIOS>false</IsXamarinIOS>
-        <IsXamarinIOS Condition="'$(TargetFramework)'=='net6.0-maccatalyst' or $(TargetFramework.ToLower().StartsWith('xamarin.ios'))">true</IsXamarinIOS>
-        
-        <IsXamarinMac>false</IsXamarinMac>
-        <IsXamarinMac Condition="$(TargetFramework.ToLower().StartsWith('xamarin.mac'))">true</IsXamarinMac>
-        
-        <_IsAndroid>false</_IsAndroid>
-        <_IsAndroid Condition="$(IsMonoAndroid) or '$(TargetFramework)'=='net6.0-android'">true</_IsAndroid>
-        
-        <_IsCatalyst>false</_IsCatalyst>
-        <_IsCatalyst Condition="$(_IsCatalyst) or '$(TargetFramework)'=='net6.0-maccatalyst'">true</_IsCatalyst>
-        
-        <_IsIOS>false</_IsIOS>
-        <_IsIOS Condition="$(IsXamarinIOS) or '$(TargetFramework)'=='net6.0-ios'">true</_IsIOS>
-        
-        <_IsMacOS>false</_IsMacOS>
-        <_IsMacOS Condition="$(IsXamarinMac) or '$(TargetFramework)'=='net6.0-macos'">true</_IsMacOS>
-    </PropertyGroup>
+	<PropertyGroup>
+		<IsMonoAndroid>false</IsMonoAndroid>
+		<IsMonoAndroid Condition="$(TargetFramework.ToLower().StartsWith('monoandroid'))">true</IsMonoAndroid>
 
-    <ItemGroup>
-        <PackageReference Include="Serilog" Version="2.11.0" />
-    </ItemGroup>
-    
-    <ItemGroup>
-        <Compile Remove="Sinks\Xamarin\**\*.cs" />
-        <None Include="Sinks\Xamarin\**\*.cs" />
-    </ItemGroup>
+		<IsXamarinIOS>false</IsXamarinIOS>
+		<IsXamarinIOS Condition="'$(TargetFramework)'=='net6.0-maccatalyst' or $(TargetFramework.ToLower().StartsWith('xamarin.ios'))">true</IsXamarinIOS>
 
-    <ItemGroup>
-        <None Include="..\..\assets\serilog-sink-nuget.png" Pack="true" Visible="false" PackagePath="images\icon.png" />
-    </ItemGroup>
+		<IsXamarinMac>false</IsXamarinMac>
+		<IsXamarinMac Condition="$(TargetFramework.ToLower().StartsWith('xamarin.mac'))">true</IsXamarinMac>
 
-    <ItemGroup>
-          <Compile Remove="**\*.cs" />
-          <None Include="**\*.cs" />
-    </ItemGroup>
-  
-    <ItemGroup Condition=" $(_IsIOS) or $(_IsCatalyst) or $(_IsMacOS) ">
-          <Compile Include="Sinks\Xamarin\apple-common\**\*.cs" />
-    </ItemGroup>
-  
-    <ItemGroup Condition=" $(_IsAndroid) ">
-          <Compile Include="Sinks\Xamarin\android\**\*.cs" />
-    </ItemGroup>
+		<_IsAndroid>false</_IsAndroid>
+		<_IsAndroid Condition="$(IsMonoAndroid) or '$(TargetFramework)'=='net6.0-android'">true</_IsAndroid>
+
+		<_IsCatalyst>false</_IsCatalyst>
+		<_IsCatalyst Condition="$(_IsCatalyst) or '$(TargetFramework)'=='net6.0-maccatalyst'">true</_IsCatalyst>
+
+		<_IsIOS>false</_IsIOS>
+		<_IsIOS Condition="$(IsXamarinIOS) or '$(TargetFramework)'=='net6.0-ios'">true</_IsIOS>
+
+		<_IsMacOS>false</_IsMacOS>
+		<_IsMacOS Condition="$(IsXamarinMac) or '$(TargetFramework)'=='net6.0-macos'">true</_IsMacOS>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Serilog" Version="2.1.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\..\assets\serilog-sink-nuget.png" Pack="true" Visible="false" PackagePath="images\icon.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Remove="**\*.cs" />
+		<None Include="Sinks\**\*.cs" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" $(_IsIOS) or $(_IsCatalyst) or $(_IsMacOS) ">
+		<Compile Include="Sinks\Xamarin\apple-common\**\*.cs" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" $(_IsAndroid) ">
+		<Compile Include="Sinks\Xamarin\android\**\*.cs" />
+	</ItemGroup>
 </Project>
