@@ -193,3 +193,4 @@ FakesAssemblies/
 
 # macOS
 .DS_Store
+/.vs

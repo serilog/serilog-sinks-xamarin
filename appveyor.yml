@@ -1,25 +1,27 @@
 version: '{build}'
 skip_tags: true
-image: Visual Studio 2019
+image: Visual Studio 2022
 configuration: Release
 install:
+  - ps: mkdir -Force ".\build\" | Out-Null
+  - cmd: dotnet workload install maui macos android ios maccatalyst
   - ps: mkdir -Force ".\artifacts\" | Out-Null
 build_script:
-- ps: ./Build.ps1 -majorMinor 0.2.0 -revision "$env:APPVEYOR_BUILD_VERSION" -branch "$env:APPVEYOR_REPO_BRANCH"
+- ps: ./Build.ps1
 test: off
 artifacts:
 - path: artifacts/Serilog.*.nupkg
 deploy:
 - provider: NuGet
   api_key:
-    secure: N59tiJECUYpip6tEn0xvdmDAEiP9SIzyLEFLpwiigm/8WhJvBNs13QxzT1/3/JW/
+    secure: 1vfQHBQJGc6+0gH8WeuPc2mcD8aAIih+umHmgR8V8tP4dGCs90uD70cbiY2oISAj
   skip_symbols: true
   on:
-    branch: /^(master|dev)$/
+    branch: /^(main|dev)$/
 - provider: GitHub
   auth_token:
     secure: p4LpVhBKxGS5WqucHxFQ5c7C8cP74kbNB0Z8k9Oxx/PMaDQ1+ibmoexNqVU5ZlmX
   artifact: /Serilog.*\.nupkg/
   tag: v$(appveyor_build_version)
   on:
-    branch: master
+    branch: main
