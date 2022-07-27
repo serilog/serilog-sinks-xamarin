@@ -21,7 +21,7 @@ foreach ($src in ls src/*) {
 
 	echo "build: Packaging project in $src"
 
-    & msbuild /r /m /p:Configuration=Release /p:VersionSuffix=$buildSuffix /p:EnableSourceLink=true "/p:PackageOutputPath=..\..\artifacts"
+    & msbuild /r /m /p:Configuration=Release /p:VersionSuffix=$suffix /p:EnableSourceLink=true "/p:PackageOutputPath=..\..\artifacts"
 
     if($LASTEXITCODE -ne 0) { exit 1 }    
 
