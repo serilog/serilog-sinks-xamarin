@@ -24,7 +24,7 @@ When using Xamarin.Android
 ```csharp
 Log.Logger = new LoggerConfiguration()
     .WriteTo.AndroidLog()
-    .Enrich.WithProperty(Constants.SourceContextPropertyName, "MyCustomTag") //Sets the Tag field.
+    .Enrich.WithProperty(Constants.AndroidTagPropertyName, "MyCustomTag") //Sets the Tag field.
     .CreateLogger();
 ```
 
