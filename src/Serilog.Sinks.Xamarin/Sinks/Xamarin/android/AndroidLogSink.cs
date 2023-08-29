@@ -20,6 +20,7 @@ using Serilog.Core;
 using Serilog.Events;
 using Serilog.Formatting;
 using AndroidLog = Android.Util.Log;
+using Constants = Serilog.Sinks.Xamarin.Constants;
 
 namespace Serilog.Sinks.Xamarin
 {
@@ -51,7 +52,7 @@ namespace Serilog.Sinks.Xamarin
 			var renderSpace = new StringWriter();
 			_textFormatter.Format(logEvent, renderSpace);
 
-			var tag = logEvent.Properties.Where(x => x.Key == Constants.SourceContextPropertyName).Select(x => x.Value.ToString("l", null)).FirstOrDefault() ?? "";
+			var tag = logEvent.Properties.Where(x => x.Key == Constants.AndroidTagPropertyName).Select(x => x.Value.ToString("l", null)).FirstOrDefault() ?? "";
 
 			switch (logEvent.Level) {
 				case LogEventLevel.Debug:
